@@ -20,7 +20,7 @@ export enum PostMainFocus {
   THREE_D = '3D',
   STORY = 'STORY',
   SPACE = 'SPACE',
-  CUSTOM = 'CUSTOM',
+  OTHER = 'OTHER',
 }
 
 export const PostMainFocusSchema = z.nativeEnum(PostMainFocus);

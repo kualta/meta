@@ -16,6 +16,9 @@ import {
   type EventMetadata,
   type EventMetadataDetails,
   EventSchema,
+  type ExperimentalPostMetadata,
+  type ExperimentalPostMetadataDetails,
+  ExperimentalPostSchema,
   type ImageMetadata,
   type ImageMetadataDetails,
   ImageSchema,
@@ -28,9 +31,6 @@ import {
   type MintMetadata,
   type MintMetadataDetails,
   MintSchema,
-  type CustomMetadata,
-  type CustomMetadataDetails,
-  CustomSchema,
   PostMainFocus,
   PostMetadataSchemaId,
   type SpaceMetadata,
@@ -659,9 +659,9 @@ export function mint({
  * @private
  * @privateRemarks MUST stay very @private to produce usable docs
  */
-type CustomDetails = InputForPostMetadataDetails<CustomMetadataDetails>;
+type CustomDetails = InputForPostMetadataDetails<ExperimentalPostMetadataDetails>;
 /**
- * All {@link CustomMetadataDetails} fields with:
+ * All {@link ExperimentalPostMetadataDetails} fields with:
  * - `id` defaults to a UUID
  * - `locale` defaults to `en`
  * - `mainContentFocus` automatically set to `PostSchemaId.CUSTOM_LATEST`
@@ -696,9 +696,9 @@ export function custom({
   locale = DEFAULT_LOCALE,
   id = v4(),
   ...others
-}: CustomOptions): CustomMetadata {
+}: CustomOptions): ExperimentalPostMetadata {
   return evaluate(
-    CustomSchema.safeParse({
+    ExperimentalPostSchema.safeParse({
       $schema: PostMetadataSchemaId.CUSTOM_LATEST,
       ...nft,
       lens: {
